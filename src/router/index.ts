@@ -60,86 +60,27 @@ export const dashboardMenu = [
 		openStyle: 0,
 		icon: 'icon-appstore',
 		children: [
+			// {
+			// 	id: 101,
+			// 	name: '首页',
+			// 	url: 'dashboard/index',
+			// 	openStyle: 0,
+			// 	icon: 'icon-home',
+			// 	affix: true
+			// },
 			{
-				id: 101,
-				name: '首页',
-				url: 'dashboard/index',
+				id: 102,
+				name: '工作台',
+				url: 'dashboard/workbench',
 				openStyle: 0,
-				icon: 'icon-home',
-				affix: true
+				icon: 'icon-appstore'
 			}
 		]
 	}
 ]
 
 // 配置常量菜单
-export const constantMenu = [
-	// {
-	// 	id: 1000,
-	// 	name: 'Demo',
-	// 	url: null,
-	// 	openStyle: 0,
-	// 	icon: 'icon-windows',
-	// 	children: [
-	// 		{
-	// 			id: 1001,
-	// 			name: 'Icon 图标',
-	// 			url: 'demo/icons/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1002,
-	// 			name: '二维码生成',
-	// 			url: 'demo/qrcode/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1003,
-	// 			name: '页面打印',
-	// 			url: 'demo/printJs/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1004,
-	// 			name: '图片裁剪',
-	// 			url: 'demo/cropper/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1005,
-	// 			name: '富文本编辑器',
-	// 			url: 'demo/editor/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1006,
-	// 			name: 'Markdown',
-	// 			url: 'demo/markdown/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1007,
-	// 			name: 'ECharts图表',
-	// 			url: 'demo/echarts/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		},
-	// 		{
-	// 			id: 1008,
-	// 			name: 'WebSocket',
-	// 			url: 'demo/websocket/index',
-	// 			openStyle: 0,
-	// 			icon: 'icon-unorderedlist'
-	// 		}
-	// 	]
-	// }
-]
+export const constantMenu = []
 
 export const errorRoute: RouteRecordRaw = {
 	path: '/:pathMatch(.*)',
