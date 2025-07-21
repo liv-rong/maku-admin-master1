@@ -2,10 +2,10 @@
 	<el-dialog v-model="visible" title="新增" :close-on-click-modal="false" draggable>
 		<el-form ref="dataFormRef" :model="dataForm" :rules="dataRules" label-width="120px" @keyup.enter="submitHandle()">
 			<el-form-item prop="num" label="新增用户个数">
-				<el-input v-model="dataForm.num" placeholder="新增用户个数"></el-input>
+				<el-input v-model.number="dataForm.num" placeholder="新增用户个数"></el-input>
 			</el-form-item>
 			<el-form-item prop="schoolId" label="学校id">
-				<el-input v-model="dataForm.schoolId" placeholder="学校id"></el-input>
+				<el-input v-model.number="dataForm.schoolId" placeholder="学校id"></el-input>
 			</el-form-item>
 		</el-form>
 		<template #footer>

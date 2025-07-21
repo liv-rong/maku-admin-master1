@@ -4,7 +4,7 @@
 			<el-form-item prop="schoolName">
 				<el-input v-model="state.queryForm.schoolName" placeholder="学校名称"></el-input>
 			</el-form-item>
-			<el-form-item prop="abbreviate">
+			<el-form-item prop="schoolAbbreviate">
 				<el-input v-model="state.queryForm.schoolAbbreviate" placeholder="学校简称"></el-input>
 			</el-form-item>
 			<el-form-item prop="enabled">

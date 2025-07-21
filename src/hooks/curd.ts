@@ -17,7 +17,7 @@ export const useCrud = (options: IHooksOptions) => {
 		queryForm: {},
 		dataList: [],
 		order: '',
-		asc: false,
+		asc: true,
 		page: 1,
 		limit: 10,
 		total: 0,
@@ -182,6 +182,7 @@ export const useCrud = (options: IHooksOptions) => {
 	}
 
 	const reset = (queryRef: any) => {
+		console.log(queryRef, 'reset')
 		queryRef.resetFields()
 
 		getDataList()

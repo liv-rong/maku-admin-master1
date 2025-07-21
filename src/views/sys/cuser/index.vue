@@ -13,18 +13,7 @@
 			<el-form-item prop="campusName">
 				<el-input v-model="state.queryForm.campusName" placeholder="校区名称"></el-input>
 			</el-form-item>
-			<el-form-item prop="campusId">
-				<el-input v-model="state.queryForm.campusId" placeholder="校区id"></el-input>
-			</el-form-item>
-			<el-form-item prop="username">
-				<el-input v-model="state.queryForm.username" placeholder="账号"></el-input>
-			</el-form-item>
-			<el-form-item prop="realName">
-				<el-input v-model="state.queryForm.realName" placeholder="真实姓名"></el-input>
-			</el-form-item>
-			<el-form-item prop="pic">
-				<el-input v-model="state.queryForm.pic" placeholder="头像"></el-input>
-			</el-form-item>
+
 			<el-form-item prop="sex">
 				<el-select v-model="state.queryForm.sex" placeholder="性别" clearable>
 					<el-option label="男" :value="1" />
@@ -42,6 +31,13 @@
 					<el-option label="银认证" :value="1" />
 					<el-option label="金认证" :value="2" />
 				</el-select>
+			</el-form-item>
+
+			<el-form-item>
+				<el-button icon="Search" type="primary" @click="getDataList()">查询</el-button>
+			</el-form-item>
+			<el-form-item>
+				<el-button icon="RefreshRight" @click="reset(queryRef)">重置</el-button>
 			</el-form-item>
 		</el-form>
 	</el-card>

@@ -1,7 +1,7 @@
 <template>
 	<el-dialog v-model="visible" :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" draggable>
 		<el-form ref="dataFormRef" :model="dataForm" :rules="dataRules" label-width="120px" @keyup.enter="submitHandle()">
-			<el-form-item prop="id" label="Id">
+			<el-form-item v-if="dataForm.id" prop="id" label="Id">
 				<el-input v-model.number="dataForm.id" placeholder="Id"></el-input>
 			</el-form-item>
 			<el-form-item prop="schoolId" label="学校Id">
@@ -51,9 +51,13 @@ const init = async (id?: number) => {
 
 	// id 存在则为修改
 	if (id) {
-		getSchoolById('/campus/deleteById', id).then(res => {
+		getSchoolById('/campus/getById', id).then(res => {
 			console.log(res)
-			Object.assign(dataForm, res.data)
+			dataForm.id = res.data.id || 0
+			dataForm.schoolId = res.data.schoolId || 0
+			dataForm.name = res.data.name || ''
+			dataForm.longitude = res.data.longitude || ''
+			dataForm.latitude = res.data.latitude || ''
 		})
 	}
 }
