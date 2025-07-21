@@ -8,13 +8,13 @@ export const getSchoolById = (url: string, id: number) => {
 }
 export const updateSchool = (value: SchoolType) => {
 	return service.post('/school/saveOrUpdate', {
-		value
+		...value
 	})
 }
 
 export const updateCampus = (value: CampusType) => {
 	return service.post('/campus/saveOrUpdate', {
-		value
+		...value
 	})
 }
 

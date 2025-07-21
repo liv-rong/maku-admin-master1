@@ -1,8 +1,8 @@
 <template>
 	<el-dialog v-model="visible" :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" draggable>
 		<el-form ref="dataFormRef" :model="dataForm" :rules="dataRules" label-width="120px" @keyup.enter="submitHandle()">
-			<el-form-item prop="schoolNo" label="编号">
-				<el-input v-model="dataForm.schoolNo" placeholder="编号"></el-input>
+			<el-form-item prop="id" label="id">
+				<el-input v-model.number="dataForm.id" placeholder="id"></el-input>
 			</el-form-item>
 			<el-form-item prop="name" label="学校名称">
 				<el-input v-model="dataForm.name" placeholder="学校名称"></el-input>
@@ -13,18 +13,9 @@
 			<el-form-item prop="pic" label="图标">
 				<el-input v-model="dataForm.pic" placeholder="图标"></el-input>
 			</el-form-item>
-			<el-form-item label="审核状态">
-				<el-tooltip :content="dataForm.auditIt ? '已审核' : '未审核'" placement="top">
-					<el-switch v-model="dataForm.auditIt" />
-				</el-tooltip>
-			</el-form-item>
+
 			<el-form-item prop="emailSuffix" label="邮箱后缀">
 				<el-input v-model="dataForm.emailSuffix" placeholder="邮箱后缀"></el-input>
-			</el-form-item>
-			<el-form-item label="启用/禁用">
-				<el-tooltip :content="dataForm.enabled ? '启用' : '禁用'" placement="top">
-					<el-switch v-model="dataForm.enabled" />
-				</el-tooltip>
 			</el-form-item>
 		</el-form>
 		<template #footer>
@@ -52,10 +43,8 @@ const dataForm = reactive<SchoolType>({
 	id: '',
 	name: '',
 	pic: '',
-	schoolNo: '',
 	abbreviate: '',
-	enabled: true,
-	auditIt: false
+	emailSuffix: ''
 })
 
 const init = async (id?: number) => {
@@ -70,16 +59,20 @@ const init = async (id?: number) => {
 
 	// id 存在则为修改
 	if (id) {
-		getSchoolById('/school/deleteById', id).then(res => {
+		getSchoolById('/school/getById', id).then(res => {
 			console.log(res)
-			Object.assign(dataForm, res.data)
+			dataForm.id = res.data.id
+			dataForm.name = res.data.name
+			dataForm.pic = res.data.pic
+			dataForm.abbreviate = res.data.abbreviate
+			dataForm.emailSuffix = res.data.emailSuffix
 		})
 	}
 }
 
 const dataRules = ref({
 	name: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
-	schoolNo: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
+	abbreviate: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
 })
 
 // 表单提交
@@ -91,6 +84,8 @@ const submitHandle = () => {
 		if (!valid) {
 			return false
 		}
+
+		console.log(dataForm, 'dataForm')
 
 		updateSchool(dataForm)
 			.then(() => {

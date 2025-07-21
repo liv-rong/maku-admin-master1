@@ -19,12 +19,12 @@ export interface UpdateTestuserType {
 
 export const addTestUser = (value: AddTestUserType) => {
 	return service.post('/user/test/insert', {
-		value
+		...value
 	})
 }
 
 export const UpdateTestUser = (value: UpdateTestuserType) => {
 	return service.post('/user/test/update', {
-		value
+		...value
 	})
 }

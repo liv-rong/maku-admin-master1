@@ -99,20 +99,6 @@ const addOrUpdateRef = ref()
 const addOrUpdateHandle = (id?: number) => {
 	addOrUpdateRef.value.init(id)
 }
-
-const dataScopeRef = ref()
-const userVisible = ref(false)
-const roleId = ref()
-const userTitle = ref()
-const handleCommand = (command: string, row: any) => {
-	if (command === 'dataScope') {
-		dataScopeRef.value.init(row.id)
-	} else if (command === 'user') {
-		roleId.value = row.id
-		userTitle.value = '分配用户 - ' + row.name
-		userVisible.value = true
-	}
-}
 </script>
 
 <style scoped>
