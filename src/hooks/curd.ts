@@ -1,8 +1,7 @@
 import { IHooksOptions } from '@/hooks/interface'
 import service from '@/utils/request'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import qs from 'qs'
 import { enableDisable, deleteById } from '@/api/sys/school'
 
 export const useCrud = (options: IHooksOptions) => {
@@ -177,12 +176,12 @@ export const useCrud = (options: IHooksOptions) => {
 			ElMessage.success(enabled ? '启用成功' : '禁用成功')
 			query()
 		} catch (error) {
-			ElMessage.success('修改失败')
+			// ElMessage.success('修改失败')
+		} finally {
 		}
 	}
 
 	const reset = (queryRef: any) => {
-		console.log(queryRef, 'reset')
 		queryRef.resetFields()
 
 		getDataList()

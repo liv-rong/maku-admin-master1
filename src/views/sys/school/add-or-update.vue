@@ -1,7 +1,7 @@
 <template>
 	<el-dialog v-model="visible" :title="!dataForm.id ? '新增' : '修改'" :close-on-click-modal="false" draggable>
 		<el-form ref="dataFormRef" :model="dataForm" :rules="dataRules" label-width="120px" @keyup.enter="submitHandle()">
-			<el-form-item prop="id" label="id">
+			<el-form-item v-if="dataForm.id" prop="id" label="id">
 				<el-input v-model.number="dataForm.id" placeholder="id"></el-input>
 			</el-form-item>
 			<el-form-item prop="name" label="学校名称">
@@ -40,7 +40,6 @@ const dataFormRef = ref()
 const loading = ref(false)
 
 const dataForm = reactive<SchoolType>({
-	id: '',
 	name: '',
 	pic: '',
 	abbreviate: '',
@@ -49,18 +48,16 @@ const dataForm = reactive<SchoolType>({
 
 const init = async (id?: number) => {
 	visible.value = true
-	dataForm.id = ''
 
 	// 重置表单数据
 	if (dataFormRef.value) {
 		dataFormRef.value.resetFields()
 	}
-	console.log(id, 'id')
+	dataForm.id = undefined
 
 	// id 存在则为修改
 	if (id) {
 		getSchoolById('/school/getById', id).then(res => {
-			console.log(res)
 			dataForm.id = res.data.id
 			dataForm.name = res.data.name
 			dataForm.pic = res.data.pic
@@ -84,8 +81,10 @@ const submitHandle = () => {
 		if (!valid) {
 			return false
 		}
-
-		console.log(dataForm, 'dataForm')
+		//如果 dataForm id 为空 删除这个属性
+		if (!dataForm.id) {
+			delete dataForm.id
+		}
 
 		updateSchool(dataForm)
 			.then(() => {
