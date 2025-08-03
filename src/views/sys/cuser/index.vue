@@ -5,7 +5,7 @@
 				<el-input v-model="state.queryForm.id" placeholder="id"></el-input>
 			</el-form-item>
 			<el-form-item prop="username">
-				<el-input v-model="state.queryForm.username" placeholder="账号"></el-input>
+				<el-input v-model="state.queryForm.username" placeholder="用户名"></el-input>
 			</el-form-item>
 			<el-form-item prop="schoolName">
 				<el-input v-model="state.queryForm.schoolName" placeholder="学校名称"></el-input>
@@ -79,7 +79,7 @@
 			</el-table-column>
 			<el-table-column label="该账户是否未锁定" width="100" header-align="center" align="center">
 				<template #default="scope">
-					<el-tag>{{ scope.row.accountNonLocked === 1 ? '可用' : '停用' }}</el-tag>
+					<el-tag>{{ scope.row.accountNonLocked ? '可用' : '停用' }}</el-tag>
 				</template>
 			</el-table-column>
 
@@ -97,7 +97,7 @@
 			</el-table-column>
 			<el-table-column label="用户类型" width="100" header-align="center" align="center">
 				<template #default="scope">
-					<el-tag>{{ scope.row.userType === 0 ? '正常用户' : '测试用户' }}</el-tag>
+					<el-tag>{{ scope.row.userType ? '测试用户' : '正常用户' }}</el-tag>
 				</template>
 			</el-table-column>
 

@@ -39,6 +39,7 @@
 			<el-table-column prop="id" label="id" header-align="center" align="center"></el-table-column>
 			<el-table-column prop="userId" label="用户id" header-align="center" align="center"></el-table-column>
 			<el-table-column prop="username" label="用户名" header-align="center" align="center"></el-table-column>
+			<el-table-column prop="realname" label="真实姓名" header-align="center" align="center"></el-table-column>
 			<el-table-column prop="schoolId" label="学校id" header-align="center" align="center"></el-table-column>
 			<el-table-column prop="schoolName" label="学校" header-align="center" align="center"></el-table-column>
 
